@@ -12,25 +12,15 @@ public class PasswordClient {
         System.out.println("- Contains at least one of these symbols: ! @ # $ % ^ & * ?");
         System.out.print("\nEnter your secure password: ");
         String password = scanner.nextLine();
-
-
         SecurePassword pass = new SecurePassword(password);
-        if (!pass.isSecure()) {
+        while (!pass.isSecure()) {
             System.out.print(pass.status());
+            System.out.println();
+            System.out.print("Please Enter another secure password: ");
+            pass.setPassword(scanner.nextLine());
+            System.out.println();
         }
-        else {
             System.out.println("Password created successfully.");
-        }
-    /* to be implemented
-       create and use a SecurePassword object with the user’s password and determine
-       if it’s secure using the isSecure() method.
 
-       If it isn’t secure enough, provide them a status update using the status() method
-       and prompting them to try repeatedly until they have a password that
-       meets all requirements, at which point tell them "Password is secure" and end.
-
-       Note that, as the user provides updated passwords, you will need to update the
-       password in your SecurePassword object using the setter smethod, .setPassword(),
-    */
     }
 }
